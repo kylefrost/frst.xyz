@@ -17,13 +17,17 @@ def gen_rand_alias(size, chars=string.ascii_uppercase + string.ascii_lowercase +
 def create():
     # Get URL and password from POST Request
     URL = request.form.get('url')
-    custom = request.form.get('custom')
     password = request.form.get('password')
+    custom = request.form.get('custom')
 
-    if custom is None:
+    print "custom: " + custom + ", custom len: " + str(len(custom))
+
+    if custom == '':
         alias = gen_rand_alias(10)
     else:
         alias = custom
+
+    print "alias is: " + alias
     
     # If password is incorrect, Rick Roll
     if password not in dbc.passwords or password is None:
@@ -70,4 +74,4 @@ def alias(alias):
 
 # Run Flask app on load
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
