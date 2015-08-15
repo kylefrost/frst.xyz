@@ -20,15 +20,12 @@ def create():
     password = request.form.get('password')
     custom = request.form.get('custom')
 
-    print "custom: " + custom + ", custom len: " + str(len(custom))
-
+    # Check if custom alias is set, if not, generate one
     if custom == '':
         alias = gen_rand_alias(10)
     else:
         alias = custom
 
-    print "alias is: " + alias
-    
     # If password is incorrect, Rick Roll
     if password not in dbc.passwords or password is None:
         return render_template("sorry.html", message="Sorry, only Kyle can use this URL shortener.")
@@ -56,13 +53,17 @@ def alias(alias):
     # Insert Redirect URL and Alias into database
     cursor.execute("SELECT url FROM " + dbc.urltbl + " WHERE alias = \"" + alias + "\"")
 
+    # Get result
     result = cursor.fetchone()
     
+    # If result is None, alias wasn't found, show error
     if result is None:
         return render_template("sorry.html", message="Sorry, that URL alias wasn't found.")
     
+    # Set URL
     url = result[0]
 
+    # Log click from user
     cursor.execute("INSERT INTO " + dbc.cltbl + " (ip, alias, dateClicked, userAgent, browser, platform) VALUES (\"" + str(request.remote_addr) + "\", \"" + alias + "\", \"" + time.strftime('%Y-%m-%d %H:%M:%S') + "\", \"" + str(request.headers.get('User-Agent')) + "\", \"" + str(request.user_agent.browser) +  "\", \"" + str(request.user_agent.platform) + "\")")
 
     # Close connections
@@ -70,6 +71,7 @@ def alias(alias):
     cursor.close()
     db.close()
 
+    # Redirect to unshortened URL
     return redirect(str(result[0]), code=302)
 
 # Run Flask app on load
