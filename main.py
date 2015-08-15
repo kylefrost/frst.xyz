@@ -15,12 +15,15 @@ def gen_rand_alias(size, chars=string.ascii_uppercase + string.ascii_lowercase +
 # Insert new url and alias into database
 @app.route('/create', methods=['GET', 'POST'])
 def create():
-    # Get randomly generated alias
-    alias = gen_rand_alias(10)
-    
     # Get URL and password from POST Request
     URL = request.form.get('url')
+    custom = request.form.get('custom')
     password = request.form.get('password')
+
+    if custom is None:
+        alias = gen_rand_alias(10)
+    else:
+        alias = custom
     
     # If password is incorrect, Rick Roll
     if password not in dbc.passwords or password is None:
