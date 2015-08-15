@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>FRST | Kyle Frost's URL Shortener</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            /* Style tag in the head because I don't feel like importing a CSS file! */
+            .wrap {
+                padding-top: 20px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+
+                position: absolute;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                display: block;
+                margin: 0;
+                font-family: sans-serif;
+                font-size: 18px;
+                appearance: none;
+                box-shadow: none;
+                border-radius: none;
+                padding: 10px;
+                border: solid 5px #c9c9c9;
+                transition: border 0.3s;
+            }
+            
+            input[type="text"]:focus,
+            input[type="text"].focus,
+            input[type="password"]:focus,
+            input[type="password"].focus {
+                outline: none;
+                border: solid 5px #969696;
+            }
+
+            input[type="submit"] {
+                border : solid 5px #c9c9c9;
+                font-size : 20px;
+                color : #a9a9a9;
+                padding : 2px 20px;
+                background-color : #ffffff;
+
+            }
+        </style>
+	</head>
+	<body>
+        <div class="wrap">
+            <form method="post" action="/create" id="sendurl">
+                <center>
+                    <!-- BEAM ME UP, SCOTTY! -->
+                    <input type="text" name="url" placeholder="Enter URL" /><br>
+                    <input type="password" name="password" placeholder="Password" /><br><br>
+                    <input type="submit" value="Shorten URL" />
+                </center>
+            </form>
+        </div>
+        <!-- Did you really think I would check the password client side? -->
+	</body>
+</html>

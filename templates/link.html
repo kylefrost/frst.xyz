@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>FRST | Kyle Frost's URL Shortener</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .wrap {
+                padding-top: 20px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+
+                position: absolute;
+            }
+        </style>
+	</head>
+	<body>
+        <div class="wrap">
+            <a href="{{ url }}">Shortened URL: {{ url }}</a><br>
+            Plain Text to Copy: {{ url }}
+        </div>
+	</body>
+</html>
