@@ -44,6 +44,7 @@ def create():
 
     return render_template("link.html", url="http://frst.xyz/" + alias)
 
+# Redirect to unshortened URL and log user's info
 @app.route('/<alias>', methods=['GET', 'POST'])
 def alias(alias):
     # Create database connection
@@ -72,7 +73,7 @@ def alias(alias):
     db.close()
 
     # Redirect to unshortened URL
-    return redirect(str(result[0]), code=302)
+    return redirect(url, code=302)
 
 # Run Flask app on load
 if __name__ == "__main__":
