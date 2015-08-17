@@ -54,7 +54,7 @@ Do this from inside of your virtualenv if you plan on running this inside of one
 
 - Customizing
 
-Inside of [main.py](main.py) you'll find miscellaneous things that are [frst.xyz](http://frst.xyz) specific and user specific to myself (Kyle). These will eventually be moved into the dbc.py file, but for now, these must be changed manually.
+Inside of [`main.py`](main.py) you'll find miscellaneous things that are [frst.xyz](http://frst.xyz) specific and user specific to myself (Kyle). These will eventually be moved into the dbc.py file, but for now, these must be changed manually.
 
 - Test
 
@@ -63,6 +63,10 @@ Running `python main.py` from the root directory of the project should now prese
 * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```
 Now, visiting `http://localhost:5000/` in your web browser of choice should present you with a working version
+
+- Go Live
+
+This is where the web server component of the prerequisites comes in handy. Deploy this to a web server of your choice along with your custom URL in order to have a fully working URL shortener that you can access from any web browser. If you don't own a physical server, one option is running this on virutalized on a service such as [Heroku](https://www.heroku.com), though the free tier may be slow for these purposes.
 
 ## License
 See [LICENSE](LICENSE)
