@@ -27,7 +27,7 @@ def create():
     
     print URL + password + custom
 
-    if password is None or URL is None or custom is None:
+    if password is None or URL is None:
         return "Something went wrong."
 
     # Check if custom alias is set, if not, generate one
