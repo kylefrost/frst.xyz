@@ -1,5 +1,5 @@
 # frst.xyz
-Source code of the frst.xyz URL shortener.
+Source code of the [frst.xyz](http://frst.xyz/) URL shortener.
 
 ## Install Your Own
 #### Prerequisites
