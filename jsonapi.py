@@ -12,6 +12,9 @@ def api_create():
     password = request.form.get('password')
     custom = request.form.get('custom')
 
+    if password is None or URL is None or custom is None:
+        return "Something went wrong.<br>password: " + str(password) + "<br>URL: " + str(URL) + "<br>custom: " + str(custom)
+
     # Check if custom alias is set, if not, generate one
     if custom == '':
         alias = gen_rand_alias(10)
@@ -19,7 +22,7 @@ def api_create():
         alias = custom
 
     # If password is incorrect, Rick Roll
-    if password not in dbc.passwords or password is None:
+    if password not in dbc.passwords or password == '':
         return jsonify(error="Password was not recognized.")
 
     # Create database connection

@@ -24,6 +24,11 @@ def create():
     URL = request.form.get('url')
     password = request.form.get('password')
     custom = request.form.get('custom')
+    
+    print URL + password + custom
+
+    if password is None or URL is None or custom is None:
+        return "Something went wrong."
 
     # Check if custom alias is set, if not, generate one
     if custom == '':
@@ -32,7 +37,7 @@ def create():
         alias = custom
 
     # If password is incorrect, Rick Roll
-    if password not in dbc.passwords or password is None:
+    if password not in dbc.passwords or password == '':
         return render_template("sorry.html", message="Sorry, only Kyle can use this URL shortener.")
 
     # Create database connection
