@@ -1,7 +1,12 @@
 from flask import Flask, render_template, request, redirect
+from jsonapi import api
 import MySQLdb, string, random, dbc, time
 
+# Create Flask app
 app = Flask(__name__)
+
+# Register Blueprints
+app.register_blueprint(api)
 
 # Load Index page
 @app.route('/')
